@@ -1,0 +1,37 @@
+Configs: {
+	FIFO_Config: {
+		DisplayName: Basic Configuration
+
+		nonFIFOItems: {
+			Label: Ignored Items
+			Tooltip:
+				'''
+				These items will be ignored by the FIFO System.
+				Add items here that behave uniquely, such as Stardust Dragon Staff.
+				The FIFO system only works with minions that simply summons a minion.
+				It will not work properly with minions that acts as worms,
+				or minions that have special conditions.
+				'''
+		}
+
+		nonFIFOProjectiles: {
+			Label: Group Purge Projectiles
+			Tooltip:
+				'''
+				These projectiles will be purged by the FIFO System.
+				Minions added here will be removed from the field as a group defined in the config.
+				When a minion is their turn in the queue to be replaced,
+				all minions in the group will be removed from the queue.
+				For example, this config contains a group #3531 for Stardust Dragon parts,
+				When a another minion is summoned and a dragon part's turn comes up for removal,
+				all parts of the dragon will be removed.
+				To group projectiles together, assign equal values to each key minion.
+				'''
+		}
+
+		purgeFIFOProjectiles: {
+			Label: purge F I F O Projectiles
+			Tooltip: ""
+		}
+	}
+}

@@ -18,5 +18,8 @@ To group minions together, assign equal values to each key minion.
 
 # Changelog
 
+v0.3
+- Fix config tooltips.
+
 v0.2
 - Initial release.

@@ -14,7 +14,7 @@ Configs: {
 				'''
 		}
 
-		nonFIFOProjectiles: {
+		purgeFIFOProjectiles: {
 			Label: Group Purge Projectiles
 			Tooltip:
 				'''
@@ -27,11 +27,6 @@ Configs: {
 				all parts of the dragon will be removed.
 				To group projectiles together, assign equal values to each key minion.
 				'''
-		}
-
-		purgeFIFOProjectiles: {
-			Label: purge F I F O Projectiles
-			Tooltip: ""
 		}
 	}
 }

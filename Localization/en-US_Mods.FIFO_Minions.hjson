@@ -1,16 +1,20 @@
 Configs: {
 	FIFO_Config: {
-		DisplayName: Basic Configuration
+		DisplayName: Server Configuration
 
 		nonFIFOItems: {
-			Label: Ignored Items
+			Label: Blacklisted Items
 			Tooltip:
 				'''
-				These items will be ignored by the FIFO System.
-				Add items here that behave uniquely, such as Stardust Dragon Staff.
-				The FIFO system only works with minions that simply summons a minion.
-				It will not work properly with minions that acts as worms,
-				or minions that have special conditions.
+				These items will be ignored only when removing minions through the FIFO system.
+				Items added here will still add their respective minions to the queue.
+				Add items here that behave uniquely.
+				For example, the Stardust Dragon Staff summons only one minion.
+				Subsequent summons will only extend the dragon's length.
+				At maximum length, due to the nature of the FIFO system,
+				the dragon will cut itself short to make room for the new dragon body part,
+				breaking the Stardust Dragon from properly functioning.
+				To prevent this, the Stardust Dragon Staff should be in this list.
 				'''
 		}
 
@@ -26,6 +30,39 @@ Configs: {
 				When a another minion is summoned and a dragon part's turn comes up for removal,
 				all parts of the dragon will be removed.
 				To group projectiles together, assign equal values to each key minion.
+				'''
+		}
+
+		Headers: {
+			Main: Main Functionality
+			Advanced: Advanced Options
+		}
+
+		forcedFIFOProjectiles: {
+			Label: Whitelisted Projectiles
+			Tooltip:
+				'''
+				These projectiles will be forced to be in the basic FIFO system.
+				This is an attempt to modded minions that do not work natively with said system.
+				Only add minion projectiles here.
+				Mods such as Calamity uses a very different way to summon minions,
+				and adding them in the whitelist may allow them to with the basic FIFO system.
+				'''
+		}
+
+		enableActiveFIFO: {
+			Label: Enable Active FIFO Implementation
+			Tooltip:
+				'''
+				This is a very radical implementation over the basic system.
+				When enabled, the mod will attempt to keep track of all projectiles in the world.
+				When a projectile is spawned, it will check if there are new minions.
+				Determining what a minion is can be difficult and is only based on assumption.
+				When a new minion is detected, it will be then managed by the FIFO system.
+				Blacklisted items and whitelisted projectiles will be respected first,
+				then this advanced detection will kick in.
+				This has a very significant performance impact.
+				NOT YET IMPLEMENTED. Might be cancelled.
 				'''
 		}
 	}

@@ -19,8 +19,7 @@ namespace FIFO_Minions
 
         private void On_FreeUpPetsAndMinions(On_Player.orig_FreeUpPetsAndMinions orig, Player player, Item item)
         {
-            FIFO_Config modConfig = ModContent.GetInstance<FIFO_Config>();
-            if (!modConfig.IsItemIgnoredForFIFO(item))
+            if (!FIFO_Config.I.IsItemIgnoredForFIFO(item))
             {
                 FIFO_Player modPlayer = player.GetModPlayer<FIFO_Player>();
                 if (!modPlayer.IsProjectileQueueEmpty())
@@ -38,13 +37,13 @@ namespace FIFO_Minions
                                 break;
                             }
                             Projectile projectile = modPlayer.GetProjectileFromQueue();
-                            int? fifoGroupId = modConfig.IsProjectilePurgedForFIFO(projectile);
+                            int? fifoGroupId = FIFO_Config.I.IsProjectilePurgedForFIFO(projectile);
                             if (fifoGroupId != null && projectile.type != item.shoot)
                             {
-                                List<int> purgableMinionTypes = modConfig.GetFIFOGroupID((int)fifoGroupId);
+                                List<int> purgableMinionTypes = FIFO_Config.I.GetFIFOGroupID((int)fifoGroupId);
                                 foreach (Projectile minion in Main.projectile)
                                 {
-                                    if (minion.owner == player.whoAmI && minion.minion && 
+                                    if (minion.owner == player.whoAmI && minion.minion &&
                                         purgableMinionTypes.Contains(minion.type))
                                     {
                                         modPlayer.RemoveProjectileFromList(minion.whoAmI);
